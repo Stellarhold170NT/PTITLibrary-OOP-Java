@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="PTIT Library" />
+        <meta
+            property="og:description"
+            content="Ptiters are united by a share purpose"
+        />
+        <meta
+            property="og:image"
+            content="https://stellarhold170nt.github.io/PTITLibrary/assets/img/icon.svg"
+        />
+        <meta property="og:type" content="website" />
+        <link
+            rel="icon"
+            href="https://stellarhold170nt.github.io/PTITLibrary/assets/img/icon.svg"
+        />
+
+        <title>PTIT Library</title>
+
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+
+        <style>
+            .chat_area {
+                display: flex;
+                width: 100%;
+                margin: 0 128px;
+                gap: 64px;
+                margin-bottom: 64px;
+            }
+            .chat_box,
+            .chat_bar {
+                min-height: calc(100vh - 148px);
+            }
+
+            .chat_bar {
+                width: 35%;
+            }
+            .chat_box {
+                height: 100%;
+                width: 65%;
+            }
+
+            .message_btn {
+                margin-left: 14px;
+            }
+
+            .message_btn ul {
+                display: flex;
+                gap: 16px;
+            }
+
+            .message_btn li {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .message_btn li img {
+                height: 44px;
+                width: 44px;
+            }
+
+            .message_btn li span {
+                font-size: 1.6rem;
+                margin-top: 3px;
+                padding: 4px 12px;
+            }
+
+            .message_btn li span.focus {
+                font-weight: 700;
+                color: white;
+                background-color: var(--primary-color);
+            }
+
+            .message_util {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .message_util img {
+                height: 24px;
+            }
+
+            .new_message {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+            }
+
+            .new_message span {
+                font-size: 1.6rem;
+            }
+
+            .search_message {
+                cursor: pointer;
+            }
+
+            .avatar {
+                width: 64px;
+                height: 64px;
+                background-color: #ccc;
+                background-image: url("./assets/img/avatar.jpg");
+                background-size: cover;
+                background-position: center;
+                border-radius: 50%;
+                background-repeat: no-repeat;
+                /* transition: opacity 0.5s ease; */
+                opacity: 1;
+            }
+            .list_friend_message {
+                margin-top: 12px;
+                border: 2px #f2f2f2 solid;
+                height: 412px;
+                overflow-y: auto;
+            }
+
+            .list_friend_message ul {
+                display: flex;
+                flex-direction: column;
+            }
+            .list_friend_message li {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 12px;
+            }
+
+            .list_friend_message li:not(:nth-child(5)) {
+                border-bottom: 2px #f2f2f2 solid;
+            }
+
+            .message_content {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                flex-grow: 1;
+                max-width: calc(100% - 76px);
+            }
+
+            .message_row1 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .fullname {
+                font-size: 1.6rem;
+                font-weight: 700;
+            }
+
+            .message_sent_date {
+                font-size: 1.2rem;
+            }
+
+            .list_friend_message .text_message {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-size: 1.6rem;
+                max-width: 100%;
+                padding: 2px 0;
+            }
+
+            .text_message.focus {
+                font-weight: 700;
+            }
+
+            .chat_container {
+                width: 100%;
+                min-height: 658px;
+                border: 2px #f2f2f2 solid;
+            }
+
+            .message_header {
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 48px;
+                background-color: var(--primary-color);
+            }
+
+            .message_header .info {
+                color: white;
+                font-size: 1.6rem;
+            }
+
+            .message_header .info i {
+                font-weight: 700;
+            }
+
+            .message_controller {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .main_chat {
+                height: 530px;
+                overflow-y: auto;
+            }
+
+            .main_chat ul {
+                margin-top: 12px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .main_chat ul li {
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+                padding: 8px 0;
+                padding-bottom: 24px;
+                margin: 0 20px;
+            }
+
+            .main_chat .text_message {
+                font-size: 1.6rem;
+                max-width: 100%;
+                padding: 2px 0;
+                line-height: 1.4;
+            }
+
+            .main_chat .message_row1 {
+                margin-top: 10px;
+            }
+
+            .main_chat li {
+                border-bottom: 2px #f2f2f2 solid;
+            }
+
+            .compose_messsage {
+                padding: 12px 20px;
+                display: flex;
+                gap: 8px;
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .compose_messsage img {
+                margin-top: 10px;
+                height: 44px;
+            }
+
+            .text-input {
+                margin-top: 8px;
+                resize: vertical;
+                flex-grow: 1;
+                max-width: 100%;
+                border: 1px #f2f2f2 solid;
+                padding: 8px 12px;
+                font-size: 1.6rem;
+                font-family: "Arial";
+                height: 48px;
+            }
+
+            .text-input:focus {
+                /* outline: 1px #ccc solid; */
+            }
+
+            .msg_image {
+                margin-left: 92px;
+                padding-top: 12px;
+            }
+
+            .msg_image ul {
+                display: flex;
+                gap: 16px;
+            }
+
+            .msg_image li {
+                position: relative;
+            }
+
+            .msg_image img:first-child {
+                height: 32px;
+            }
+
+            .delete_img {
+                position: absolute;
+                right: -8px;
+                top: -8px;
+                width: 18px;
+                height: 18px;
+            }
+
+            .preview-container {
+                margin-left: 92px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .preview-wrapper {
+                margin-top: 10px;
+                position: relative;
+                display: inline-block;
+            }
+
+            .preview-image {
+                max-width: 80px;
+                max-height: 80px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+
+            .remove-image-btn {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                background-color: red;
+                color: white;
+                border: none;
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+                font-size: 14px;
+                cursor: pointer;
+            }
+
+            .search_member {
+                margin-left: 92px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .search_member span {
+                font-size: 1.6rem;
+            }
+
+            .search_member_btn {
+                position: relative;
+            }
+
+            .search_member_btn input {
+                padding-left: 28px;
+                height: 28px;
+                font-size: 1.4rem;
+            }
+            .search_member_btn img {
+                position: absolute;
+                left: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .message_content img {
+                max-width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <div class="main-content">
+                <div
+                    class="body"
+                    style="padding-top: 8px; height: 76px; background: #fff"
+                >
+                    <div
+                        class="logo"
+                        style="
+                            background: url(assets/img/logo-1.svg);
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position-y: 50%;
+                            width: calc(2.251 * 76px);
+                            height: 76px;
+                        "
+                    ></div>
+
+                    <ul>
+                        <li>
+                            <a href="#!">Tài liệu chuyên ngành</a>
+                        </li>
+                        <li><a href="#!">Tiếng anh</a></li>
+                        <li><a href="./borrow.jsp">Mượn sách</a></li>
+                        <li><a href="#!">Phần mềm</a></li>
+                    </ul>
+
+                    <div class="search" style="margin-left: 30px">
+                        <span
+                            class="material-symbols-outlined"
+                            style="font-size: 26px"
+                        >
+                            search
+                        </span>
+                    </div>
+
+                    <div
+                        class="language"
+                        style="
+                            display: flex;
+                            margin-left: auto;
+                            align-items: center;
+                            gap: 8px;
+                        "
+                    >
+                        <a href="./user.jsp" class="username"
+                            ><span style="font-size: 18px">Hello</span></a
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="ulti">
+            <div class="main-content">
+                <div class="body" style="margin-top: 18px">
+                    <div class="breadcrumb">
+                        <ul
+                            style="display: flex; align-items: center; gap: 8px"
+                        >
+                            <li>
+                                <a href="./home.jsp"
+                                    ><span
+                                        class="material-symbols-outlined"
+                                        style="font-size: 26px"
+                                    >
+                                        home_pin
+                                    </span></a
+                                >
+                            </li>
+                            <li>
+                                <a href="./home.jsp">PTIT Library</a>
+                            </li>
+                            <li>
+                                <a href="#!">Tài liệu chuyên ngành</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header">
+            <div class="main-content">
+                <div class="body">
+                    <div class="chat_area">
+                        <div class="chat_bar">
+                            <div class="message_btn">
+                                <ul>
+                                    <li class="inbox_btn">
+                                        <img
+                                            src="./assets/img/inbox-icon-red.svg"
+                                            alt=""
+                                        /><span class="focus">Inbox</span>
+                                    </li>
+                                    <li class="unread_btn">
+                                        <img
+                                            src="./assets/img/unread-icon-black.svg"
+                                            alt=""
+                                        />
+                                        <span>Unread</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="message_util">
+                                <div class="new_message">
+                                    <img
+                                        src="./assets/img/plus-icon.svg"
+                                        alt=""
+                                    />
+                                    <span>New message</span>
+                                </div>
+                                <div class="search_message">
+                                    <img
+                                        src="./assets/img/search-message-icon.svg"
+                                        alt=""
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="list_friend_message">
+                                <ul>
+                                    <li>
+                                        <div class="avatar"></div>
+                                        <div class="message_content">
+                                            <div class="message_row1">
+                                                <span class="fullname"
+                                                    >Nguyễn Việt Huy</span
+                                                >
+                                                <span class="message_sent_date"
+                                                    >Nov 18, 2024</span
+                                                >
+                                            </div>
+                                            <span class="text_message"
+                                                >Hello, hiện tại bro đang có bận
+                                                gì không đó?</span
+                                            >
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chat_box">
+                            <div class="chat_container">
+                                <div class="message_header">
+                                    <span class="info"
+                                        >Nhắn tin tới
+                                        <i>Nguyễn Việt Huy</i></span
+                                    >
+                                    <div class="message_controller">
+                                        <img
+                                            src="./assets/img/add-friend-icon.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            src="./assets/img/block-icon.svg"
+                                            alt=""
+                                        />
+                                        <img
+                                            class="add-image-btn"
+                                            src="./assets/img/erase-icon.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                                <div class="main_chat">
+                                    <ul>
+                                        <li>
+                                            <div class="avatar"></div>
+                                            <div class="message_content">
+                                                <div class="message_row1">
+                                                    <span class="fullname"
+                                                        >Nguyễn Việt Huy</span
+                                                    >
+                                                    <span
+                                                        class="message_sent_date"
+                                                        >Nov 18, 2024</span
+                                                    >
+                                                </div>
+                                                <span class="text_message">
+                                                    Hey there! Just a little
+                                                    reminder that today is a
+                                                    perfect day to embrace new
+                                                    challenges and let your
+                                                    creativity shine.
+                                                    <br />
+                                                    <br />
+                                                    Whether it's trying a new
+                                                    recipe, learning a fun fact,
+                                                    or simply taking a moment to
+                                                    appreciate the little
+                                                    things, make the most of it!
+                                                    😊
+                                                </span>
+                                                <img
+                                                    src="../web/images/B22DCCN003/message/316fd3ffce97f515ebe47f113b782fb6.jpg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="avatar"></div>
+                                            <div class="message_content">
+                                                <div class="message_row1">
+                                                    <span class="fullname"
+                                                        >Nguyễn Việt Huy</span
+                                                    >
+                                                    <span
+                                                        class="message_sent_date"
+                                                        >Nov 18, 2024</span
+                                                    >
+                                                </div>
+                                                <span class="text_message">
+                                                    😊
+                                                </span>
+                                                <img
+                                                    src="../web/images/B22DCCN003/message/316fd3ffce97f515ebe47f113b782fb6.jpg"
+                                                    alt=""
+                                                />
+
+                                                <img
+                                                    src="../web/images/B22DCCN003/message/2m0t2d6.jpg"
+                                                    alt=""
+                                                />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="search_member">
+                                    <span>Gửi đến: </span>
+                                    <div class="search_member_btn">
+                                        <input type="text" />
+                                        <img
+                                            src="./assets/img/search-message-icon.svg"
+                                            alt=""
+                                        />
+                                    </div>
+                                </div>
+                                <div
+                                    class="preview-container"
+                                    id="preview-container"
+                                ></div>
+                                <div class="compose_messsage">
+                                    <div class="avatar"></div>
+                                    <textarea
+                                        class="text-input"
+                                        placeholder="Viết tin nhắn của bạn..."
+                                    ></textarea>
+                                    <img
+                                        src="./assets/img/img-icon.svg"
+                                        alt=""
+                                        onclick="document.getElementById('file-input').click()"
+                                    />
+                                    <input
+                                        type="file"
+                                        id="file-input"
+                                        style="display: none"
+                                        accept="image/*"
+                                        multiple
+                                        onchange="previewImages(event)"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="main-content">
+                <div class="map">
+                    <div class="search-box">
+                        <span class="hint">Tìm kiếm tài liệu</span>
+                        <span class="material-symbols-outlined icon">
+                            search
+                        </span>
+                    </div>
+                    <div class="menu">
+                        <span class="header">Menu</span>
+                        <ul>
+                            <li><a href="#!">Tài liệu chuyên ngành</a></li>
+                            <li><a href="#!">Tiếng anh</a></li>
+                            <li><a href="#!">Sách</a></li>
+                            <li><a href="#!">Phần mềm</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="search">
+                        <span class="header">Search</span>
+                        <ul>
+                            <li>
+                                <a href="#!">Công nghệ thông tin</a>
+                            </li>
+                            <li>
+                                <a href="#!">Khoa học máy tính</a>
+                            </li>
+                            <li>
+                                <a href="#!">Công nghệ đa phương tiện</a>
+                            </li>
+                            <li>
+                                <a href="#!">Marketing</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="help">
+                        <span class="header">Help</span>
+                        <ul>
+                            <li><a href="#!">Ask a Librarian</a></li>
+                            <li><a href="#!">Trouble Connecting</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="connect">
+                    <a
+                        href="https://www.facebook.com/ptitl"
+                        style="
+                            padding: 14px 24px;
+                            background: var(--primary-color);
+                            color: white;
+                            font-size: 24px;
+                        "
+                        class="button"
+                    >
+                        Give to the Library
+                    </a>
+                    <i class="fa fa-facebook icon" aria-hidden="true"></i>
+                </div>
+                <div class="copyright">
+                    <i class="fa fa-copyright" aria-hidden="true"></i>
+                    <span>2024 PTIT University Library</span>
+                </div>
+            </div>
+        </div>
+
+        <script src="./assets/js/jquery3.6.0.js"></script>
+        <script>
+            function previewImages(event) {
+                console.log("HERE");
+                const files = event.target.files;
+                const previewContainer =
+                    document.getElementById("preview-container");
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    const imageUrl = URL.createObjectURL(file);
+
+                    // Tạo wrapper chứa ảnh và nút xóa
+                    const previewWrapper = document.createElement("div");
+                    previewWrapper.className = "preview-wrapper";
+
+                    // Tạo thẻ img để hiển thị ảnh
+                    const imgElement = document.createElement("img");
+                    imgElement.src = imageUrl;
+                    imgElement.className = "preview-image";
+                    previewWrapper.appendChild(imgElement);
+
+                    // Tạo nút xóa
+                    const removeButton = document.createElement("button");
+                    removeButton.className = "remove-image-btn";
+                    removeButton.innerHTML = "×";
+                    removeButton.onclick = () => {
+                        previewWrapper.remove();
+                    };
+                    previewWrapper.appendChild(removeButton);
+
+                    // Thêm wrapper vào preview container
+                    previewContainer.appendChild(previewWrapper);
+                }
+            }
+
+            var new_message = document.querySelector(".new_message");
+            new_message.addEventListener("click", function () {
+                var info = document.querySelector(".chat_box .info");
+                var main_chat = document.querySelector(".main_chat");
+                var message_controller = document.querySelector(
+                    ".message_controller"
+                );
+                main_chat.innerHTML = "";
+                info.innerHTML = "Tạo tin nhắn mới";
+                message_controller.innerHTML = "";
+            });
+        </script>
+    </body>
+</html>

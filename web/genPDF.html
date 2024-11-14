@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Export PDF with jsPDF</title>
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <link rel="stylesheet" href="./assets/css/form-register.css" />
+        <style>
+            @font-face {
+                font-family: "Signature";
+                src: url("./assets/font/Signature/iCielSupaMegaFantastic-Regular.otf");
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            .form-register {
+                font-family: "Segoe UI", sans-serif;
+                font-size: 16px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 707px;
+                height: 1000px;
+                background-color: white;
+                color: #707070;
+            }
+
+            .top {
+                width: 100%;
+                height: 8px;
+                background-color: var(--primary-color);
+            }
+
+            .form-content {
+                position: relative;
+                margin: 24px;
+                width: calc(100% - 24px * 2);
+                height: calc(100% - 24px * 2 - 8px);
+                background-color: white;
+            }
+
+            .header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .header-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 4px;
+            }
+
+            .header .logo {
+                height: 76px;
+            }
+
+            .library-name {
+                font-weight: 500;
+                font-size: 16px;
+                color: #595959;
+            }
+
+            .school-name {
+                font-style: italic;
+
+                font-size: 16px;
+                color: #707070;
+            }
+
+            .form-meta-data {
+                margin-top: 100px;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .form-title,
+            .form-total {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                align-items: flex-start;
+            }
+
+            .form-table-data {
+                display: flex;
+                margin-top: 24px;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .form-signature {
+                font-family: "Signature";
+                font-size: 28px;
+                margin-right: 32px;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                align-items: center;
+            }
+
+            .form-meta-data .title {
+                font-size: 22px;
+                font-weight: 500;
+                color: #707070;
+            }
+
+            .form-content i {
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .form-information {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .form-avatar {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+            .form-register table {
+                margin-top: 100px;
+                width: 100%;
+            }
+            .form-register table tr {
+                height: 34px;
+            }
+
+            .form-register table tr:first-child {
+                background-color: var(--primary-color);
+                color: white;
+                font-weight: 500;
+            }
+
+            .form-register td {
+                padding-left: 8px;
+                font-size: 16px;
+                line-height: 34px;
+            }
+
+            .form-register tr td:first-child {
+                text-align: center;
+            }
+
+            .form-register tr:not(:first-child) {
+                border-bottom: 1px #dadada solid;
+            }
+
+            .form-register tr:last-child {
+                border-bottom: 1px #707070 solid;
+            }
+
+            .form-footer {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                margin: auto 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- <button id="exportButton">Export to PDF</button> -->
+
+        <div class="form-register">
+            <div class="top"></div>
+
+            <div class="form-content">
+                <div class="header">
+                    <img src="./assets/img/logo-1.svg" alt="" class="logo" />
+                    <div class="header-content">
+                        <span class="library-name">Thư Viện PTIT</span>
+                        <span class="school-name"
+                            >Học Viện Công Nghệ Bưu Chính Viễn Thông</span
+                        >
+                    </div>
+                </div>
+
+                <div class="form-meta-data">
+                    <div class="form-title">
+                        <span class="title">Phiếu Đăng Ký Mượn Sách</span>
+                        <span><i>Register no</i>: #325467</span>
+                        <span><i>Register date</i>: 11/12/2024</span>
+                    </div>
+                    <div class="form-information">
+                        <span class="title">Information</span>
+
+                        <img
+                            src="./assets/img/avatar.jpg"
+                            alt=""
+                            class="form-avatar"
+                        />
+                        <span class="form-to"><i>To</i>: Nguyễn Việt Huy</span>
+                        <span class="form-student-id"
+                            ><i>Student id</i>: B22DCCN393</span
+                        >
+                        <span class="form-class"
+                            ><i>Class</i>: D22CQCN09-B</span
+                        >
+                        <span class="form-email"
+                            ><i>Email</i>: HuyNV.B22DCN393@stu.ptit.edu.vn</span
+                        >
+                    </div>
+                </div>
+
+                <table>
+                    <tr>
+                        <td>Stt</td>
+                        <td>Tên tài liệu</td>
+                        <td>Tác giả</td>
+                        <td>Ký hiệu tài liệu</td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Cấu trúc dữ liệu và giải thuật</td>
+                        <td>Nguyễn Mạnh Sơn</td>
+                        <td>VG/12345 - 6789</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <div class="form-table-data">
+                    <div class="form-total">
+                        <span><i>Total</i>: #325467</span>
+                        <span><i>Register date</i>: 11/12/2024</span>
+                        <span><i>Due date</i>: 11/12/2024</span>
+                    </div>
+                    <div class="form-signature">
+                        <span>Huy</span>
+                        <span>Nguyễn Việt Huy</span>
+                    </div>
+                </div>
+
+                <div class="form-footer">
+                    <span><i>Thư Viện PTIT</i></span>
+                    <span
+                        >Địa chỉ: Km10, Đường Nguyễn Trãi, Hà Đông, Hanoi,
+                        Vietnam
+                    </span>
+                    <span>website: http://ptit.library.com</span>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/jspdf.min.js"></script>
+        <!-- <script src="./assets/js/OpenSans-Medium-normal.js" type="module"></script> -->
+
+        <script type="module">
+            import { font } from "./assets/js/OpenSans-Medium-normal.js";
+            import { font1 } from "./assets/js/OpenSans-Italic-italic.js";
+
+            // Lấy jsPDF từ window
+            // const { jsPDF } = window.jspdf;
+
+            // Hàm generatePDF
+            function generatePDF() {
+                const doc = new jsPDF();
+                try {
+                    doc.addFileToVFS("OpenSans-Medium-normal.ttf", font);
+                    doc.addFont(
+                        "OpenSans-Medium-normal.ttf",
+                        "OpenSans-Medium",
+                        "normal"
+                    );
+
+                    doc.addFileToVFS("OpenSans-Italic-italic.ttf", font1);
+                    doc.addFont(
+                        "OpenSans-Italic-italic.ttf",
+                        "OpenSans-Italic",
+                        "italic"
+                    );
+
+                    const pageWidth = doc.internal.pageSize.getWidth();
+
+                    doc.setFillColor(237, 28, 36);
+                    doc.rect(0, 0, pageWidth, 1.5, "F");
+
+                    // console.log(doc.getFontList());
+                    // doc.text(20, 20, "Tiếng Việt với font Open Sans");
+
+                    var img = new Image();
+                    img.src = "./assets/img/logo-pdf.jpg";
+                    doc.addImage(
+                        img,
+                        "JPEG",
+                        15,
+                        10,
+                        img.width * 0.035,
+                        img.height * 0.035
+                    );
+
+                    doc.setFont("OpenSans-Medium", "normal");
+                    doc.setFontSize(14);
+                    doc.text(pageWidth - 50, 20, "Thư viện PTIT");
+
+                    doc.setFont("OpenSans-Italic", "italic");
+                    doc.setFontSize(12);
+                    doc.text(
+                        pageWidth - 100 + 2,
+                        26,
+                        "Học Viện Công Nghệ Bưu Chính Viễn Thông"
+                    );
+
+                    doc.setFont("OpenSans-Medium", "normal");
+
+                    // Dữ liệu bảng
+                    const data = [
+                        [
+                            "Đường lối CM của Đảng Cộng Sản Việt Nam",
+                            "2010",
+                            "Bộ GD&ĐT",
+                            "CTQG",
+                        ],
+                        ["Vật lý 3", "2020", "Hoàng Thu Hương", "TT&TT"],
+                        ["Đại số", "2010", "Lê Bá Long", "TT&TT"],
+                        ["Lập trình Web", "2023", "Nguyễn Mạnh Hùng", "TT&TT"],
+                    ];
+
+                    // Tiêu đề cột
+                    const columns = [
+                        "Tên môn học",
+                        "Năm",
+                        "Giảng viên",
+                        "Chuyên ngành",
+                    ];
+
+                    // Vẽ các đường kẻ cho bảng
+                    const startX = 20; // Vị trí x của bảng
+                    const startY = 60; // Vị trí y của bảng
+                    const colWidth = 50; // Chiều rộng mỗi cột
+                    const rowHeight = 10; // Chiều cao mỗi dòng
+
+                    // Vẽ tiêu đề bảng
+                    doc.setFontSize(12);
+                    for (let i = 0; i < columns.length; i++) {
+                        doc.text(columns[i], startX + i * colWidth, startY);
+                    }
+
+                    // Vẽ các dòng của bảng
+                    for (let i = 0; i < data.length; i++) {
+                        for (let j = 0; j < data[i].length; j++) {
+                            doc.text(
+                                data[i][j],
+                                startX + j * colWidth,
+                                startY + (i + 1) * rowHeight
+                            );
+                        }
+                    }
+
+                    // Vẽ các đường viền của bảng (khung)
+                    for (let i = 0; i <= columns.length; i++) {
+                        // Vẽ đường ngang (đường viền cột)
+                        doc.line(
+                            startX + i * colWidth,
+                            startY,
+                            startX + i * colWidth,
+                            startY + (data.length + 1) * rowHeight
+                        );
+                    }
+
+                    for (let i = 0; i <= data.length + 1; i++) {
+                        // Vẽ đường dọc (đường viền dòng)
+                        doc.line(
+                            startX,
+                            startY + i * rowHeight,
+                            startX + columns.length * colWidth,
+                            startY + i * rowHeight
+                        );
+                    }
+
+                    /*---------*/
+                    // Dữ liệu bảng
+
+                    // Lưu PDF nếu không có lỗi
+                    doc.save("document-with-open-sans.pdf");
+                    console.log("Font đã được áp dụng thành công!");
+                } catch (error) {
+                    console.error("Lỗi khi áp dụng font:", error);
+                }
+            }
+
+            // Thêm sự kiện click cho nút
+            document
+                .getElementById("exportButton")
+                .addEventListener("click", generatePDF);
+        </script>
+    </body>
+</html>
