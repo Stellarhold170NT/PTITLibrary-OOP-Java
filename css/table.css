@@ -1,0 +1,71 @@
+table {
+    display: block;
+    width: 100%;
+    margin-bottom: 96px;
+    overflow-x: auto;
+}
+
+table tr {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px #ccc solid;
+}
+
+table td {
+    width: 144px;
+    height: 76px;
+    border-radius: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+table td:not(:first-child) {
+    border-left: 4px #ccc solid;
+    background: rgba(35, 35, 35, 0.1);
+}
+
+table td:first-child {
+    border-left: 4px #ffc5c7 solid;
+    background: var(--primary-color);
+}
+
+table td:first-child span {
+    color: #fff1f2;
+}
+
+table td:not(:first-child):hover {
+    background: rgba(204, 204, 204, 0.6);
+}
+
+/* table td.mandatory {
+    opacity: 0.6;
+}
+
+table td.compulsory {
+    opacity: 0.65;
+}
+
+table td.base {
+    opacity: 0.7;
+}
+
+table td.specialized {
+    opacity: 1;
+} */
+
+table td span {
+    display: block;
+    font-size: 1.6rem;
+    text-align: center;
+    color: black;
+    font-weight: 700;
+}
+
+table td span + span {
+    font-weight: 400;
+    opacity: 0.87;
+}
