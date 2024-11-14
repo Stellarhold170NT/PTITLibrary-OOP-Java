@@ -1,0 +1,1 @@
+sqlcmd -S DESKTOP-S2GQGMB\SQLEXPRESS -d PTITLibrary -U sa -P 1001011010010110 -i "C:\Users\Admin\Documents\CodePTIT\Web Project\SQL Query\NotifyJob.sql"
