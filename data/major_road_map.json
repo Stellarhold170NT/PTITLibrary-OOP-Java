@@ -1,0 +1,68 @@
+[
+    {
+        "major_id": "CNTT",
+        "Học kỳ 1": [
+            { "name": "Triết học Mác-Lênin", "credits": 3 },
+            { "name": "Tin học cơ sở 1", "credits": 2 },
+            { "name": "Giải tích 1", "credits": 3 },
+            { "name": "Đại số", "credits": 3 }
+        ],
+        "Học kỳ 2": [
+            { "name": "Kinh tế chính trị Mác-Lênin", "credits": 2 },
+            { "name": "Tiếng Anh (Course 1)", "credits": 4 },
+            { "name": "Tin học cơ sở 2", "credits": 2 },
+            { "name": "Giải tích 2", "credits": 3 },
+            { "name": "Pháp luật đại cương", "credits": 2 },
+            { "name": "Vật lý ứng dụng", "credits": 4 },
+            { "name": "Kỹ thuật số", "credits": 2 }
+        ],
+        "Học kỳ 3": [
+            { "name": "Chủ nghĩa xã hội khoa học", "credits": 2 },
+            { "name": "Tiếng Anh (Course 2)", "credits": 4 },
+            { "name": "Ngôn ngữ lập trình C++", "credits": 3 },
+            { "name": "Toán rời rạc 1", "credits": 3 },
+            { "name": "Xử lý tín hiệu số", "credits": 2 },
+            { "name": "Xác suất thống kê", "credits": 3 }
+        ],
+        "Học kỳ 4": [
+            { "name": "Tư tưởng Hồ Chí Minh", "credits": 2 },
+            { "name": "Tiếng Anh (Course 3)", "credits": 4 },
+            { "name": "Kiến trúc máy tính", "credits": 3 },
+            { "name": "Toán rời rạc 2", "credits": 3 },
+            { "name": "Cấu trúc dữ liệu và giải thuật", "credits": 3 },
+            { "name": "Lý thuyết thông tin", "credits": 3 }
+        ],
+        "Học kỳ 5": [
+            { "name": "Lịch sử Đảng cộng sản VN", "credits": 2 },
+            { "name": "Tiếng Anh (Course 3 Plus)", "credits": 4 },
+            { "name": "Hệ điều hành", "credits": 3 },
+            { "name": "Lập trình hướng đối tượng", "credits": 3 },
+            { "name": "Cơ sở dữ liệu", "credits": 3 },
+            { "name": "Mạng máy tính", "credits": 3 },
+            { "name": "Lập trình Python", "credits": 3 }
+        ],
+        "Học kỳ 6": [
+            { "name": "Nhập môn công nghệ phần mềm", "credits": 3 },
+            { "name": "Nhập môn trí tuệ nhân tạo", "credits": 3 },
+            { "name": "An toàn và bảo mật HTTT", "credits": 3 },
+            { "name": "Lâp trình Web", "credits": 3 },
+            { "name": "Cơ sở dữ liệu phân tán", "credits": 3 },
+            { "name": "Thực tập cơ sở", "credits": 4 }
+        ],
+        "Học kỳ 7": [
+            { "name": "QLDA phần mềm", "credits": 3 },
+            { "name": "IoT và ứng dụng", "credits": 3 },
+            { "name": "Phân tích và thiết kế HTTT", "credits": 3 },
+            { "name": "Xử lý ảnh", "credits": 3 },
+            { "name": "Học phần tự chọn", "credits": 6 }
+        ],
+        "Học kỳ 8": [
+            { "name": "Thiết kế mạng máy tính", "credits": 3 },
+            { "name": "Đánh giá hiệu năng mạng", "credits": 3 },
+            { "name": "An ninh mạng", "credits": 3 },
+            { "name": "Học phần tự chọn", "credits": 3 },
+            { "name": "Phương pháp luận nghiên cứu khoa học", "credits": 2 }
+        ],
+        "Học kỳ 9": [{ "name": "Thực tập và tốt nghiệp", "credits": 12 }]
+    }
+]
