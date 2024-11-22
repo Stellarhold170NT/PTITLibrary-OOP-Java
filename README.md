@@ -34,6 +34,7 @@
 
 ![screencapture-b44c-2405-4802-1802-1f50-1cfa-3026-eea-db36-ngrok-free-app-PTITLibrary-borrow-jsp-2024-11-22-23_44_22](https://github.com/user-attachments/assets/fdb85f46-1c56-4022-865f-a2038f0df5e2)
 
+![screencapture-b44c-2405-4802-1802-1f50-1cfa-3026-eea-db36-ngrok-free-app-PTITLibrary-major-2024-11-22-23_57_17](https://github.com/user-attachments/assets/3c8d67fa-e10f-4d88-81c3-1405f80c5f07)
 
 
 ![screencapture-localhost-8080-PTITLibrary-message-jsp-2024-11-14-21_23_25](https://github.com/user-attachments/assets/c4ec9135-8c10-4e00-a48f-b5a7895197f1)
@@ -44,5 +45,6 @@
 
 ### CSDL
 
+![SoDoQuanHe](https://github.com/user-attachments/assets/661b361a-941d-4962-9509-362ab8c7f4c4)
 
 ![SoDoCacBang](https://github.com/user-attachments/assets/28368490-1c9e-438d-b093-bf82cd374668)
