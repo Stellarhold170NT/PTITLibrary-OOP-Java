@@ -15,6 +15,9 @@
 ![image](https://github.com/user-attachments/assets/7d038249-3de2-4d75-bbc6-5be58b04a095)
 
 
+### Server
+
+![image](https://github.com/user-attachments/assets/de83a27a-6728-40bc-8d43-8485579ab423)
 
 
 
