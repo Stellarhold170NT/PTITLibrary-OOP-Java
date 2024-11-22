@@ -8,6 +8,13 @@ Web quản lý Thư viện PTIT dành cho sinh viên
 + [Lã Quang Hải](https://github.com/haonaonao)
 
 
+Thư viện PTIT được thiết kế để đáp ứng ba giá trị cốt lõi: Quản lý hiệu quả, Tiện ích tối ưu, và Kết nối sâu sắc. Hệ thống không chỉ giúp quản lý tài nguyên thư viện một cách khoa học, mà còn mang đến sự thuận tiện tối đa cho người dùng qua các tiện ích hiện đại. Đồng thời, thư viện còn đóng vai trò như một cầu nối gắn kết cộng đồng sinh viên, giảng viên và các nguồn tri thức, góp phần thúc đẩy văn hóa học thuật tại PTIT
+
+CSDL
+
+
+![SoDoCacBang](https://github.com/user-attachments/assets/28368490-1c9e-438d-b093-bf82cd374668)
+
 
 
 ![screencapture-localhost-8080-PTITLibrary-2024-11-14-21_18_58](https://github.com/user-attachments/assets/ec97d7c0-a76f-4e7f-8987-a9dc5c17434e)
