@@ -2,6 +2,14 @@
 
 Web quản lý Thư viện PTIT dành cho sinh viên
 
+### Contributor
++ [Nguyễn Việt Huy](https://github.com/stellarhold170NT)
++ [Vũ Đức Thành](https://github.com/quethaibinh)
++ [Lã Quang Hải](https://github.com/haonaonao)
+
+
+
+
 ![screencapture-localhost-8080-PTITLibrary-2024-11-14-21_18_58](https://github.com/user-attachments/assets/ec97d7c0-a76f-4e7f-8987-a9dc5c17434e)
 
 
