@@ -16,3 +16,5 @@ Web quản lý Thư viện PTIT dành cho sinh viên
 
 ![screencapture-localhost-8080-PTITLibrary-message-jsp-2024-11-14-21_23_25](https://github.com/user-attachments/assets/c4ec9135-8c10-4e00-a48f-b5a7895197f1)
 
+
+![screencapture-b44c-2405-4802-1802-1f50-1cfa-3026-eea-db36-ngrok-free-app-PTITLibrary-ranking-jsp-2024-11-22-23_35_12](https://github.com/user-attachments/assets/b1afe6c8-05fc-4c78-a8e0-625245332273)
