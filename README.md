@@ -8,10 +8,7 @@
 + [Lã Quang Hải](https://github.com/haonaonao)
 
 
-### CSDL
 
-
-![SoDoCacBang](https://github.com/user-attachments/assets/28368490-1c9e-438d-b093-bf82cd374668)
 
 ### Giao diện
 
@@ -40,3 +37,9 @@
 
 
 ![screencapture-b44c-2405-4802-1802-1f50-1cfa-3026-eea-db36-ngrok-free-app-PTITLibrary-ranking-jsp-2024-11-22-23_35_12](https://github.com/user-attachments/assets/b1afe6c8-05fc-4c78-a8e0-625245332273)
+
+
+### CSDL
+
+
+![SoDoCacBang](https://github.com/user-attachments/assets/28368490-1c9e-438d-b093-bf82cd374668)
