@@ -14,6 +14,9 @@
 
 ![image](https://github.com/user-attachments/assets/7d038249-3de2-4d75-bbc6-5be58b04a095)
 
+### Chấm điểm BTL
+![image](https://github.com/user-attachments/assets/7bad617c-7969-4898-bb28-9f2fdc4f6e1f)
+
 
 ### Server
 
